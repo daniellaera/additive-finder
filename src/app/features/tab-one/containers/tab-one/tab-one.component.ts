@@ -3,6 +3,7 @@ import { Additive } from '../../../../shared/providers/additive/additive';
 import { GenericHttpService } from '../../../../shared/service/http/generic-http.service';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab-one',
@@ -13,9 +14,12 @@ export class TabOneComponent implements OnInit {
 
   public searchValue = '';
   public additif: Observable<Additive>;
-  data: any;
+  data$: any;
+  heroes: Additive[];
 
-  constructor(private http: GenericHttpService, private addService: Additive) { }
+  constructor(private http: GenericHttpService, private route: ActivatedRoute, private addService: Additive) {
+    this.route.params.subscribe( params => this.data$ = params.id);
+  }
 
   ngOnInit() {
   }
@@ -27,7 +31,7 @@ export class TabOneComponent implements OnInit {
       return;
     }
     // faire requête http vers service...
-    this.addService.load.pipe()
+    this.addService.load().subscribe();
   }
 
 }

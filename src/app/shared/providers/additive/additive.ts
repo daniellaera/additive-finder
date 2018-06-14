@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 
-import { AdditiveData } from "./additive-data";
+import { AdditiveData } from './additive-data';
 
 /*
   Generated class for the Additive provider.
@@ -16,7 +16,7 @@ export class Additive {
   constructor() {
   }
 
-  load():Observable<any>{
-    return of(AdditiveData)
+  load(): Observable<any> {
+    return of(AdditiveData);
   }
 }
