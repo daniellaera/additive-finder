@@ -11,6 +11,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>man</h1>
+<ion-content padding="">
+  <div padding>
+    <ion-item>
+      <ion-label>Rechercher</ion-label>
+      <ion-input type="text" class="form-control" id="search" [(ngModel)]="searchValue" name="search"></ion-input>
+    </ion-item>
+  </div>
+  <ion-button (click)="search()">Rechercher</ion-button>
 </ion-content>
+
