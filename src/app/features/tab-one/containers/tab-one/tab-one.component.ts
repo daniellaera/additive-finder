@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Additive } from '../../../../shared/providers/additive/additive';
 import { GenericHttpService } from '../../../../shared/service/http/generic-http.service';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab-one',
@@ -12,14 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TabOneComponent implements OnInit {
 
-  public searchValue = '';
-  public additif: Observable<Additive>;
-  data$: any;
-  heroes: Additive[];
+  readonly ROOT_URL = 'https://jsonplaceholder.typicode.com';
 
-  constructor(private http: GenericHttpService, private route: ActivatedRoute, private addService: Additive) {
-    this.route.params.subscribe( params => this.data$ = params.id);
-  }
+  public searchValue = '';
+  public additif: Observable<Additive[]>;
+  posts: any;
+  data:any;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
   }
@@ -31,7 +30,12 @@ export class TabOneComponent implements OnInit {
       return;
     }
     // faire requête http vers service...
-    this.addService.load().subscribe();
+  }
+
+  getPosts() {
+    this.posts = this.http.get(this.ROOT_URL + '/posts').subscribe(
+      data => this.posts = data
+    )
   }
 
 }
