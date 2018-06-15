@@ -9,12 +9,12 @@ import { catchError, map } from 'rxjs/operators';
 export class GenericHttpService {
 
   public apiEndpoint: {} = {
-    fakeApi: 'https://jsonplaceholder.typicode.com'
+    wikipedia: 'https://fr.wikipedia.org/api/rest_v1/page/summary'
   };
 
   constructor(private _httpClient: HttpClient) { }
 
-  get(api: 'fakeApi'|'toto', path: string = null): Observable<any> {
+  get(api: 'wikipedia', path: string = null): Observable<any> {
     if (!this.apiEndpoint[api]) {
       return of(new Error('API Endpoint do not exist.'));
     }

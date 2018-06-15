@@ -14,3 +14,51 @@
 // To declare rules for a specific mode, create a child rule for the .md, .ios,
 // or .wp mode classes. The mode class is automatically applied to the <body>
 // element in the app.
+
+$_primary: #333;
+$_secondary: #424242;
+$_therty: #4f4f4f;
+$_forthy: #c7c7c7;
+
+body {
+  background: $_primary;
+}
+
+ion-content {
+  background: $_secondary!important;
+}
+
+// remove background color app
+.scroll, 
+.scroll.scroll-md, 
+.scroll.scroll-md.hydrated,
+.item,
+.item.item-md,
+.item.item-md.item-interactive.item-input
+ {
+  background: transparent;
+}
+
+// style all inputs
+input.native-input.native-input-md.native-input-light.native-input-md-light {
+  color: #fff;
+}
+
+// style list
+.item-md {
+  padding: 0!important;
+}
+ion-item.inner{
+  padding-left: 10px;
+}
+.item-md ion-avatar {
+  width: 100px!important;
+  height: 100px!important;
+}
+.item-md ion-avatar[slot=start], 
+.item-md ion-thumbnail[slot=start] {
+  margin: 0!important;
+}
+.avatar-md {
+  border-radius: 0!important;
+}

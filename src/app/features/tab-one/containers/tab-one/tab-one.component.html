@@ -15,12 +15,13 @@
   <div padding>
     <ion-item>
       <ion-label>Rechercher</ion-label>
-      <ion-input type="text" class="form-control" id="search" [(ngModel)]="searchValue" name="search"></ion-input>
+      <ion-input 
+      type="text" 
+      class="form-control" 
+      id="search" 
+      [(ngModel)]="searchValue" 
+      name="search"></ion-input>
     </ion-item>
   </div>
-  <ion-button (click)="getPosts()">Rechercher</ion-button>
+  <ion-button (click)="search()">Rechercher</ion-button>
 </ion-content>
-<div *ngFor="let post of posts">
-  <p>{{post | json}}</p>
-</div>
-

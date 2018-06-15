@@ -1,74 +1,30 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-toggle>
-        <ion-button>
-          <ion-icon slot="icon-only" name="menu"></ion-icon>
-        </ion-button>
-      </ion-menu-toggle>
-    </ion-buttons>
-    <ion-title>Additifs</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Item</ion-label>
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option onClick="favorite(item)">Favorite</ion-item-option>
-        <ion-item-option color="danger" onClick="share(item)">Share</ion-item-option>
-      </ion-item-options>
+    <ion-toolbar color="primary">
+      <ion-title>Liste des Additifs</ion-title>
+    </ion-toolbar>
+  </ion-header>
   
-      <ion-item-options side="end">
-        <ion-item-option onClick="unread(item)">Unread</ion-item-option>
-        <ion-item-option color="danger" onClick="share(item)">Share</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding *ngFor="let post of posts$|async" (click)="goPost(post)">
-      <ion-item text-wrap button detail>
+  <ion-content>
+  
+    <ion-list>
+  
+      <ion-item 
+        text-wrap
+        button
+        *ngFor="let post of posts$|async"
+        (click)="goPost(post)">
+        <ion-thumbnail slot="start" [style.background]="post?.getColor">
+            <span [style.color]="'#fff'">E{{post?.id}}</span>
+        </ion-thumbnail>
         <ion-label>
-          <ion-text color="primary" >
-            <h3>{{post?.title}} - {{post.id}}</h3>
+          <ion-text color="dark">
+            <h2>{{post?.name}}</h2>
           </ion-text>
-          <ion-text >
-            <p>{{post?.body}}</p>
-          </ion-text>
-          
+          <p>{{post?.type}}</p>
         </ion-label>
+        <ion-icon slot="end" color="primary" name="arrow-dropright-circle" clear item-right></ion-icon>
       </ion-item>
-
-      <ion-item-options side="start">
-        <ion-item-option onClick="favorite(item)">Favorite</ion-item-option>
-        <ion-item-option color="danger" onClick="share(item)">Share</ion-item-option>
-        <ion-item-option color="success"><ion-icon name="star"></ion-icon></ion-item-option>
-      </ion-item-options>
   
-      <ion-item-options side="end">
-        <ion-item-option onClick="unread(item)">Unread</ion-item-option>
-        <ion-item-option color="danger" onClick="share(item)">Share</ion-item-option>
-        <ion-item-option color="success"><ion-icon name="call"></ion-icon></ion-item-option>
-      </ion-item-options>
-    
-    </ion-item-sliding>
-  </ion-list>
+    </ion-list>
   
-  
-  <ion-item-options side="end">
-    <ion-item-option onClick="archive(item)">
-      <ion-icon name="archive"></ion-icon>
-      Archive
-    </ion-item-option>
-  </ion-item-options>
-  
-  <ion-item-options side="start">
-    <ion-item-option onClick="archive(item)">
-      <ion-icon name="archive"></ion-icon>
-      Archive
-    </ion-item-option>
-  </ion-item-options>
-</ion-content>
+  </ion-content>

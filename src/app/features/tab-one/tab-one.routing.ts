@@ -5,8 +5,8 @@ import { TabOneComponent } from './containers/tab-one/tab-one.component';
 const routes: Routes = [
   {
     path: '',
-    component: TabOneComponent,
-    outlet: 'one'
+    outlet: 'one',
+    component: TabOneComponent
   }
 ];
 

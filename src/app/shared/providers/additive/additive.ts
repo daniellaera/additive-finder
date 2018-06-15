@@ -13,8 +13,15 @@ import { AdditiveData } from './additive-data';
 @Injectable()
 export class Additive {
 
-  constructor() {
-  }
+  constructor() { }
+
+  load(): Observable<{
+    id: string;
+    name: string;
+    level: string;
+    type: string;
+    info: string;
+  }[]>
 
   load(): Observable<any> {
     return of(AdditiveData);

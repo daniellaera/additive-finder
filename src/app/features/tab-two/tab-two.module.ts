@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { TabTwoRoutingModule } from './tab-two.routing';
 import { TabTwoComponent } from './containers/tab-two/tab-two.component';
+import { SharedModule } from '../../shared/shared.module';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
+    IonicModule,
     TabTwoRoutingModule
   ],
   declarations: [TabTwoComponent],

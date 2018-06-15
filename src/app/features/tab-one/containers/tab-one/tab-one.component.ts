@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Additive } from '../../../../shared/providers/additive/additive';
-import { GenericHttpService } from '../../../../shared/service/http/generic-http.service';
-import { Observable} from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tab-one',
@@ -11,14 +9,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class TabOneComponent implements OnInit {
 
-  readonly ROOT_URL = 'https://jsonplaceholder.typicode.com';
-
   public searchValue = '';
-  public additif: Observable<Additive[]>;
-  posts: any;
-  data:any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private _router: Router) {}
 
   ngOnInit() {
   }
@@ -30,14 +23,7 @@ export class TabOneComponent implements OnInit {
       return;
     }
     // faire requête http vers service...
-  }
-
-  getPosts() {
-
-    let params = new HttpParams().set('userId', '1')
-    this.posts = this.http.get(this.ROOT_URL + '/posts', { params }).subscribe(
-      data => this.posts = data
-    )
+    this._router.navigate(['/detail/' + this.searchValue]);
   }
 
 }
