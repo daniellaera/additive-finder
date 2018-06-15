@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Additive } from '../../../../shared/providers/additive/additive';
 import { GenericHttpService } from '../../../../shared/service/http/generic-http.service';
 import { Observable} from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab-one',
@@ -33,7 +33,9 @@ export class TabOneComponent implements OnInit {
   }
 
   getPosts() {
-    this.posts = this.http.get(this.ROOT_URL + '/posts').subscribe(
+
+    let params = new HttpParams().set('userId', '1')
+    this.posts = this.http.get(this.ROOT_URL + '/posts', { params }).subscribe(
       data => this.posts = data
     )
   }
